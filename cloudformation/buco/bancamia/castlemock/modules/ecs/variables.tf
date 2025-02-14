@@ -1,0 +1,13 @@
+variable "prefix" {}
+variable "castlemock_controller_cpu" {}
+variable "castlemock_controller_mem" {}
+variable "castlemock_efs" {}
+variable "castlemock_efs_ap" {}
+variable "private_subnets" {}
+variable "castlemock_alb_tg" {}
+variable "castlemock_controller_sg" {}
+variable "castlemock_log_group" {}
+variable "castlemock_log_stream" {}
+variable "execution_role_arn" {}
+variable "castlemock_controller_port" {}
+variable "castlemock_controller_dns_arn" {}

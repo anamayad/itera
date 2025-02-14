@@ -1,0 +1,42 @@
+[
+   {
+      "name": "${name}",
+      "image": "${image}:latest",
+      "cpu": ${cpu},
+      "memory": ${memory},
+      "essential": true,
+      "portMappings": [
+         {
+            "containerPort": ${castlemock_controller_port},
+            "hostPort": ${castlemock_controller_port}
+         }
+      ],
+      "mountPoints": [{
+         "containerPath": "${containerPath}",
+         "sourceVolume": "${efsVolumeName}"
+      }],
+      "volumes": [{
+         "name": "${efsVolumeName}",
+         "efsVolumeConfiguration": {
+            "fileSystemId": "${efsVolumeId}",
+            "transmitEncryption": ${transmitEncryption}
+         }
+      }],
+      "logConfiguration": {
+         "logDriver": "awslogs",
+         "options": {
+            "awslogs-group": "${log_group}",
+            "awslogs-region": "${region}",
+            "awslogs-stream-prefix": "${log_stream}"
+         }
+      },
+      "environment": [{
+         "name": "JAVA_OPTS",
+         "value": "-Dcastlemock.install.runSetupWizard=false"
+      },
+      {
+         "name": "GIT_GLOBAL_CONFIG",
+         "value": "safe.directory /var/castlemock_home/workspace/Bitbucket@libs/a4670601ff706e77b6b2d4044e05ecf49b0966a4e479d03d22c4ab9de1ef65cf"
+    }]
+   }
+]
